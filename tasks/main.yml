@@ -51,9 +51,11 @@
           url: https://github.com/docker/compose/releases/download/v2.24.2/docker-compose-linux-x86_64
           dest: /usr/local/bin/docker-compose
           mode: '755'
+  when: install_docker_compose
 
 - name: change file ownership && group && permission          
   ansible.builtin.file:
           path: /usr/local/bin/docker-compose
           owner: {{ ansible_user_id }}
           group: {{ ansible_user_id }}
+  when: install_docker_compose
